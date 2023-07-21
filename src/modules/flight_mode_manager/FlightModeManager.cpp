@@ -200,7 +200,7 @@ void FlightModeManager::start_flight_task()
 		found_some_task = true;
 		FlightTaskError error = FlightTaskError::NoError;
 
-		switch (_param_mpc_pos_mode.get()) {
+		switch(5){//switch (_param_mpc_pos_mode.get()) {
 		case 0:
 			error = switchTask(FlightTaskIndex::ManualPosition);
 			break;
@@ -210,6 +210,9 @@ void FlightModeManager::start_flight_task()
 			break;
 
 		case 4:
+		case 5:
+			error = switchTask(FlightTaskIndex::HeadingControl);
+			break;
 		default:
 			if (_param_mpc_pos_mode.get() != 4) {
 				PX4_ERR("MPC_POS_MODE %" PRId32 " invalid, resetting", _param_mpc_pos_mode.get());
@@ -230,12 +233,15 @@ void FlightModeManager::start_flight_task()
 		found_some_task = true;
 		FlightTaskError error = FlightTaskError::NoError;
 
-		switch (_param_mpc_pos_mode.get()) {
+		switch(5){//switch (_param_mpc_pos_mode.get()) {
 		case 0:
 			error = switchTask(FlightTaskIndex::ManualAltitude);
 			break;
 
 		case 3:
+		case 5:
+			error = switchTask(FlightTaskIndex::HeadingControl);
+			break;
 		default:
 			error = switchTask(FlightTaskIndex::ManualAltitudeSmoothVel);
 			break;

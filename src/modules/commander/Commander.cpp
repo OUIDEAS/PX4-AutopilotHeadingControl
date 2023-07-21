@@ -997,7 +997,14 @@ Commander::handle_command(const vehicle_command_s &cmd)
 			}
 		}
 		break;
-
+	case vehicle_command_s::VEHICLE_CMD_DO_HEADINGCONTROL:
+		if(_user_mode_intention.change(vehicle_status_s::NAVIGATION_STATE_DO_HEADINGCONTROL)){
+			cmd_result = vehicle_command_ack_s::VEHICLE_CMD_RESULT_ACCEPTED;
+			}
+		else{
+			cmd_result = vehicle_command_ack_s::VEHICLE_CMD_RESULT_ACCEPTED;
+			}
+		break;
 	case vehicle_command_s::VEHICLE_CMD_NAV_VTOL_TAKEOFF:
 
 		/* ok, home set, use it to take off */
